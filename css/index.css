@@ -1,0 +1,70 @@
+:root{
+	--c1: #5EB1BF; /* teal light */
+	--c2: #0E5838; /* green */
+	--c3: #044389; /* deep blue */
+	--c4: #D4EFF7; /* pale */
+	--bg: #f7fcfd;
+	--text: #033;
+}
+*{box-sizing:border-box}
+body{font-family:Segoe UI, Roboto, Arial, sans-serif;margin:0;color:var(--text);background:var(--bg)}
+
+/* Header / hero with sliding backgrounds */
+.hero{height:250px;position:relative;overflow:hidden;transition:height .3s ease;background-size:cover;background-position:center center}
+.hero.shrink{height:70px}
+.header-overlay{position:absolute;inset:0;background:linear-gradient(rgba(212,239,247,0.55), rgba(5,20,40,0.1));display:flex;align-items:center}
+.header-inner{width:100%;max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:18px}
+.logo-wrap{display:flex;align-items:center;gap:12px}
+.logo-circle{width:56px;height:56px;border-radius:50%;background:var(--c4);display:flex;align-items:center;justify-content:center;color:var(--c3);font-weight:700}
+.logo-circle.large{width:82px;height:82px}
+.site-title{font-weight:700;color:var(--c3);letter-spacing:1px}
+
+.top-nav ul{list-style:none;margin:0;padding:0;display:flex;gap:10px}
+.top-nav a{display:inline-block;padding:6px 10px;border-radius:4px;color:var(--c3);text-decoration:none}
+.top-nav a:hover{background:rgba(255,255,255,0.35)}
+.quote{background:rgba(255,255,255,0.6);padding:8px 12px;border-radius:6px;color:var(--c2);font-weight:600}
+
+/* Page layout */
+.site-body{display:flex;gap:20px;max-width:1200px;margin:18px auto;padding:0 16px}
+.sidebar{width:200px;position:sticky;top:90px;align-self:flex-start;height:calc(100vh - 140px);background:linear-gradient(180deg,var(--c4),#fff);border-radius:8px;padding:12px}
+.sidebar ul{list-style:none;padding:0;margin:0}
+.sidebar a{display:block;padding:8px 10px;color:var(--c2);text-decoration:none;border-radius:4px}
+.sidebar a:hover{background:var(--c1);color:white}
+
+.content{flex:1}
+.panel{background:white;padding:22px;margin-bottom:18px;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,0.06)}
+.panel h2{color:var(--c3);margin-top:0}
+.illustration{max-width:100%;border-radius:8px;margin-top:12px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:center}
+
+/* Footer matching reference */
+.site-footer{background:var(--c3);color:var(--c4);padding:36px 18px;margin-top:12px}
+.footer-inner{display:flex;gap:24px;max-width:1100px;margin:0 auto;align-items:flex-start}
+.sitemap{flex:2}
+.sitemap h3{color:var(--c4);margin-top:0}
+.sitemap .cols{display:flex;gap:28px}
+.sitemap ul{list-style:disc;padding-left:18px}
+.brand{flex:1;display:flex;gap:12px;align-items:center}
+.brand-box{background:rgba(255,255,255,0.85);color:#044; padding:8px 12px;border-radius:4px}
+.contact{flex:1}
+.copyright{text-align:center;background:rgba(0,0,0,0.12);padding:8px;color:var(--c4)}
+
+/* responsive */
+@media (max-width:900px){
+	.site-body{flex-direction:column}
+	.sidebar{position:relative;width:100%;top:0;height:auto}
+	.top-nav{display:none}
+	.header-inner{padding:12px}
+	.hero{height:200px}
+	.hero.shrink{height:70px}
+	.two-col{grid-template-columns:1fr}
+}
+
+/* Sliding backgrounds (JS will cycle classes) */
+.hero.bg-1{background-image:url('https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=6d80b2c2f4c3a2b2f9b8')}
+.hero.bg-2{background-image:url('https://images.unsplash.com/photo-1509395062183-67c5ad6faff9?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=7b6a')}
+.hero.bg-3{background-image:url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=4d0a')}
+
+/* smooth anchor scrolling */
+html{scroll-behavior:smooth}
+
