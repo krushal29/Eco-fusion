@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EcoFusion — Solar Energy</title>
+  <style>
+    /* inlined from css/index.css */
+    :root {
+      --c1: #5EB1BF;
+      --c2: #0E5838;
+      --c3: #044389;
+      --c4: #D4EFF7;
+      --bg: var(--c4);
+      --text: #033;
+    }
+
+    body.dark {
+      --bg: #071425;
+      --text: #dfeff6;
+      --c4: #0f2f3f
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      font-family: Segoe UI, Roboto, Arial, sans-serif;
+      margin: 0;
+      color: var(--text);
+      background: var(--bg)
+    }
+
+    .hero {
+      height: 250px;
+      position: relative;
+      overflow: hidden;
+      transition: height .3s ease;
+      background-size: cover;
+      background-position: center center
+    }
+
+    .hero.shrink {
+      height: 70px
+    }
+
+    .header-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(rgba(212, 239, 247, 0.55), rgba(5, 20, 40, 0.1));
+      display: flex;
+      align-items: center
+    }
+
+    .header-inner {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px
+    }
+
+    .logo-img {
+      width: 64px;
+      height: 64px;
+      border-radius: 8px;
+      object-fit: cover
+    }
+
+    .top-nav {
+      margin-left: auto
+    }
+
+    .logo-circle {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--c4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--c3);
+      font-weight: 700
+    }
+
+    .logo-circle.large {
+      width: 82px;
+      height: 82px
+    }
+
+    .site-title {
+      font-weight: 700;
+      color: var(--c3);
+      letter-spacing: 1px
+    }
+
+    .top-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 10px
+    }
+
+    .top-nav a {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 4px;
+      color: var(--c3);
+      text-decoration: none
+    }
+
+    .top-nav a:hover {
+      background: rgba(255, 255, 255, 0.35)
+    }
+
+    .quote {
+      background: rgba(255, 255, 255, 0.6);
+      padding: 8px 12px;
+      border-radius: 6px;
+      color: var(--c2);
+      font-weight: 600
+    }
+
+    .site-body {
+      display: flex;
+      gap: 20px;
+      max-width: 1200px;
+      margin: 18px auto;
+      padding: 0 16px
+    }
+
+    .sidebar {
+      width: 200px;
+      position: sticky;
+      top: 90px;
+      align-self: flex-start;
+      height: calc(100vh - 140px);
+      background: linear-gradient(180deg, var(--c4), #fff);
+      border-radius: 8px;
+      padding: 12px
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 8px 10px;
+      color: var(--c2);
+      text-decoration: none;
+      border-radius: 4px
+    }
+
+    .sidebar a:hover {
+      background: var(--c1);
+      color: white
+    }
+
+    .sidebar a.active {
+      background: var(--c3);
+      color: var(--c4);
+      font-weight: 700
+    }
+
+    .content {
+      flex: 1
+    }
+
+    .panel {
+      background: linear-gradient(180deg, white, var(--c4));
+      padding: 22px;
+      margin-bottom: 18px;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06)
+    }
+
+    .panel h2 {
+      color: var(--c3);
+      margin-top: 0
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      align-items: center
+    }
+
+    .site-footer {
+      background: var(--c3);
+      color: var(--c4);
+      padding: 36px 18px;
+      margin-top: 12px
+    }
+
+    .footer-inner {
+      display: flex;
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+      align-items: flex-start
+    }
+
+    .brand-box {
+      background: rgba(255, 255, 255, 0.85);
+      color: #044;
+      padding: 8px 12px;
+      border-radius: 4px
+    }
+
+    @media (max-width:900px) {
+      .site-body {
+        flex-direction: column
+      }
+
+      .top-nav {
+        display: none
+      }
+
+      .hero {
+        height: 200px
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header id="site-header" class="hero bg-1">
+    <div class="header-overlay">
+      <div class="header-inner">
+        <div class="logo-wrap">
+          <img class="logo-img" src="../assets/logo-ef.png" alt="Eco-Fusion logo" />
+          <div class="site-title">ECO-Fusion</div>
+        </div>
+
+        <nav class="top-nav" aria-label="Primary">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="solar.html">Solar Energy</a></li>
+            <li><a href="wind.html">Wind Energy</a></li>
+          </ul>
+        </nav>
+
+        <div class="quote">"Powering a cleaner tomorrow"</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="site-body">
+    <aside class="sidebar" id="sidebar">
+      <nav aria-label="On this page">
+        <strong>On this page</strong>
+        <ul>
+          <li><a href="#solar-top">Overview</a></li>
+          <li><a href="#solar-intro">Introduction</a></li>
+          <li><a href="#solar-radiation">Solar Radiation</a></li>
+          <li><a href="#solar-collectors">Solar Collectors</a></li>
+          <li><a href="#solar-applications">Applications</a></li>
+          <li><a href="#solar-case">Case Studies</a></li>
+          <li><a href="#solar-advantages">Advantages</a></li>
+          <li><a href="#solar-limitations">Limitations</a></li>
+          <li><a href="#solar-future">Future Trends</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <section class="panel">
+        <h1 id="solar-top">Solar Energy</h1>
+
+        <h2 id="solar-intro">1. Introduction</h2>
+        <p>
+          Solar energy converts sunlight into usable heat and electricity. At its core,
+          the technology uses either photovoltaic (PV) materials to convert photons
+          directly into electrical current or concentrating systems that focus sunlight
+          to produce heat for power generation. The remarkable growth in solar over the
+          last two decades has been driven by dramatic cost reductions in PV modules,
+          balance-of-system components and inverters. As a result, solar is now a key
+          contributor to new electricity capacity in many countries, from distributed
+          rooftop arrays on homes and commercial buildings to utility-scale solar farms.
+        </p>
+        <p>
+          Beyond cost, solar offers predictable operational characteristics: panels
+          require little maintenance compared to rotating machinery, have long lifetimes
+          (often 25 years or more), and produce power with no direct greenhouse gas
+          emissions. Integration challenges arise because solar output varies with the
+          sun — diurnally and seasonally — so pairing with storage, demand flexibility
+          or dispatchable resources improves value. Nevertheless, for many consumers
+          and utilities, the economics and environmental benefits are compelling.
+        </p>
+
+        <h2 id="solar-radiation">2. Solar Radiation & Resource</h2>
+        <p>
+          The available solar resource at any site depends on latitude, elevation,
+          cloudiness and local atmospheric conditions. Insolation maps and satellite
+          datasets are used to estimate expected annual energy production for PV and
+          to size collectors for thermal systems. Direct normal irradiance (DNI) is
+          particularly important for concentrating systems, while global horizontal
+          irradiance (GHI) matters for typical PV panels. Designers also consider
+          shading, soiling and panel orientation when estimating long-term yields.
+        </p>
+        <p>
+          Modern performance models combine meteorological inputs with module
+          temperature coefficients, inverter performance curves and system losses to
+          produce expected kWh/kWp metrics, which are useful for financial
+          calculations and procurement decisions.
+        </p>
+
+        <h2 id="solar-collectors">3. PV, Thermal and Concentrating Systems</h2>
+        <p>
+          Photovoltaic systems use semiconductor junctions (commonly silicon) to
+          generate electricity. PV systems range from small off-grid modules powering
+          sensors to multi-megawatt utility arrays. Solar thermal systems, including
+          flat plate and evacuated tube collectors, capture heat for water heating,
+          space heating or industrial process heat. Concentrating solar power (CSP)
+          — parabolic troughs, dishes and tower systems — can reach higher
+          temperatures and integrate thermal storage to provide dispatchable power.
+        </p>
+        <p>
+          Innovations such as bifacial modules (which collect reflected light from
+          the ground) and perovskite cell research (tandem cells with silicon) are
+          improving efficiencies and cost-effectiveness. System-level advances include
+          tracker systems that tilt panels to follow the sun, increasing annual yield
+          by 10–30% depending on location.
+        </p>
+
+        <h2 id="solar-applications">4. Applications and System Integration</h2>
+        <p>
+          Solar is highly versatile. Rooftop PV can directly reduce electricity bills
+          for households and businesses while supporting resilience when combined with
+          batteries. Utility-scale PV is cost-competitive for bulk power markets and
+          can pair with grid-scale storage to provide firm capacity. Solar thermal
+          solutions are effective for domestic hot water, process heating and
+          industrial applications where temperatures are moderate.
+        </p>
+        <p>
+          From a systems perspective, managing high solar penetration requires
+          investment in flexibility: demand response programs, distributed storage,
+          improved forecasting and grid reinforcement. Smart inverters and vehicle-to-
+          grid technologies further increase the value that distributed solar can
+          provide to the grid.
+        </p>
+
+        <h2 id="solar-case">5. Case Studies & Deployment Examples</h2>
+        <p>
+          India: Rapid policy-driven deployment has enabled large utility parks and a
+          growing rooftop market. Projects like Bhadla Solar Park show how large sites
+          with strong resource and grid access can host gigawatt-scale installations.
+          Policy instruments (auctions, subsidies and rooftop programs) have been
+          critical.
+        </p>
+        <p>
+          Global: Diverse examples demonstrate how solar meets different needs — from
+          large solar deserts feeding grids to floating PV arrays on reservoirs that
+          reduce evaporation and improve land-use efficiency. Combining solar with
+          storage is increasingly common where evening demand and firm capacity are
+          required.
+        </p>
+
+        <h2 id="solar-advantages">6. Advantages & Challenges</h2>
+        <p>
+          Advantages include low marginal cost of generation, rapid deployment, and
+          modular scalability. Challenges include variability, land-use for very
+          large deployments, supply chain needs and end-of-life recycling for panels.
+          Addressing these requires policy, finance and industrial strategies to
+          ensure sustainable growth.
+        </p>
+
+        <h2 id="solar-future">7. Future Trends</h2>
+        <p>
+          Continued cost declines, improved cell technologies, and integrated storage
+          solutions will expand solar's role. Emerging trends include building-
+          integrated PV, floating solar, and advanced materials that promise higher
+          efficiencies and lower embodied energy. In many regions, solar will be a
+          backbone of decarbonized electricity systems.
+        </p>
+
+        <p style="margin-top:18px;">Back to <a href="index.html">Home</a></p>
+      </section>
+
+      <footer class="site-footer">
+        <div class="footer-inner">
+          <div class="sitemap">
+            <h3>Site map</h3>
+            <div class="cols">
+              <ul>
+                <li><strong>Home</strong></li>
+                <li>Energy</li>
+                <li>Classification</li>
+              </ul>
+              <ul>
+                <li><strong>Solar</strong></li>
+                <li>Energy</li>
+              </ul>
+              <ul>
+                <li><strong>Wind</strong></li>
+                <li>Energy</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="brand">
+            <div class="logo-circle large">Logo</div>
+            <div class="brand-box">
+              <strong>Eco Fusion</strong>
+              <p>quote no bgcolor extra</p>
+            </div>
+          </div>
+
+          <div class="contact">
+            <p class="phone">(91) 1234567890</p>
+            <p class="email">abc@email.com</p>
+          </div>
+        </div>
+        <div class="copyright">Copyright 20XX All Rights Reserved Company Name</div>
+      </footer>
+    </main>
+  </div>
+
+  <script src="../js/index.js"></script>
+</body>
+
+</html>
+
+</html>
